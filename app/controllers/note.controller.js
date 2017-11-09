@@ -2,10 +2,10 @@ var Note = require('../models/note.model.js');
 
 exports.create = function(req, res) {
     // Create and Save a new Note
-    if(!req.body.content) {
-        res.status(400).send({message: "Note can not be empty"});
+    if(!req.body.email) {
+        res.status(400).send({message: "Email can not be empty"});
     }
-    var note = new Note({title: req.body.title || "Untitled Note", content: req.body.content});
+    var note = new Note({username: req.body.username || "Untitled Note", email: req.body.email, name: req.body.name,question: req.body.question, answer: req.body.answer});
 
     note.save(function(err, data) {
         console.log(data);
@@ -46,8 +46,9 @@ exports.create = function(req, res) {
                 res.status(500).send({message: "Could not find a note with id " + req.params.noteId});
             }
     
-            note.title = req.body.title;
-            note.content = req.body.content;
+            note.username = req.body.username;
+            note.email = req.body.email;
+            note.name = req.body.name;
     
             note.save(function(err, data){
                 if(err) {

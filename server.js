@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
+const cors = require('cors')
+
 // create express app
 var app = express();
 
@@ -9,6 +11,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
+
+app.use(cors())
 
 // Configuring the database
 var dbConfig = require('./config/database.config.js');
@@ -33,6 +37,6 @@ app.get('/', function(req, res){
 require('./app/routes/note.routes.js')(app);
 
 // listen for requests
-app.listen(3000, function(){
+app.listen(5000, function(){
     console.log("Server is listening on port 3000");
 });
