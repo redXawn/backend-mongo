@@ -1,11 +1,8 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var NoteSchema = mongoose.Schema({
-    email: String,
-    username: String,
-    name: String,
-    question: String,
-    answer: String
+const NoteSchema = mongoose.Schema({
+    title: String,
+    content: String
 }, {
     timestamps: true
 });
